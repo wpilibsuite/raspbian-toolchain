@@ -467,7 +467,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>Path</key>
-											<string>../../tree-install/usr/local/arm-frc2019-linux-gnueabi</string>
+											<string>../../tree-install/usr/local/arm-raspbian9-linux-gnueabihf</string>
 											<key>Path Type</key>
 											<integer>2</integer>
 											<key>Privileges</key>
@@ -784,7 +784,7 @@
 					<key>CFBundleIconFile Path Type</key>
 					<integer>2</integer>
 					<key>CFBundleIdentifier</key>
-					<string>edu.wpi.first.frc-toolchain</string>
+					<string>edu.wpi.first.raspbian9-toolchain</string>
 					<key>CFBundleName</key>
 					<string>Raspbian9 Toolchain</string>
 					<key>CFBundleShortVersionString</key>
