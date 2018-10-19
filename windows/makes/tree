@@ -14,7 +14,7 @@ find libexec -name \*.exe | xargs i686-w64-mingw32-strip
 rm -rf share/info share/man
 
 pushd arm-raspbian9-linux-gnueabihf/usr/include
-patch -p4 < ../../../../../../../../../makes/case-sensitive-includes.diff
+patch -p4 < ../../../../../../../../makes/case-sensitive-includes.diff
 popd
 rm -rf lib/xtables
 
