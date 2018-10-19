@@ -11,24 +11,11 @@ jobs:
     steps:
     - script: |
         ./build-linux-tgz.sh
-        cp FRC-*-Linux*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
+        cp Raspbian9-Linux*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
       inputs:
         artifactName: 'LinuxCompiler'
-
-  - job: UbuntuPackages
-    pool:
-      vmImage: 'Ubuntu 16.04'
-    timeoutInMinutes: 0
-    steps:
-    - script: |
-        ./build-ubuntu-pkg.sh
-        cp *.deb $BUILD_ARTIFACTSTAGINGDIRECTORY
-      displayName: 'Build the image'
-    - task: PublishBuildArtifacts@1
-      inputs:
-        artifactName: 'UbuntuPackagedCompiler'
 
   - job: Windows
     pool:
@@ -37,7 +24,7 @@ jobs:
     steps:
     - script: |
         ./build-windows.sh
-        cp FRC-*-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
+        cp Raspbian9-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
       inputs:
