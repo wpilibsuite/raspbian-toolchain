@@ -1,0 +1,7 @@
+#!/bin/zsh
+source ../versions.sh
+
+
+mkdir -p sysroot-install/usr/local/arm-raspbian9-linux-gnueabihf
+mv sysroot-libc-linux/{usr,lib} sysroot-install/usr/local/arm-raspbian9-linux-gnueabihf/
+
