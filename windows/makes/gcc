@@ -30,7 +30,6 @@ tar xf ../isl-${V_ISL}.tar.bz2
 echo "Extracting GDB..."
 
 echo "Patching GCC..."
-patch -p0 < ../patches/gcc/config
 patch -p0 < ../patches/gcc/ubsan.c
 
 mv cloog-${V_CLOOG} gcc-${V_GCC}/cloog
