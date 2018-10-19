@@ -1,0 +1,64 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+jobs:
+  - job: Linux
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+        ./build-linux-tgz.sh
+        cp FRC-*-Linux*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'LinuxCompiler'
+
+  - job: UbuntuPackages
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+        ./build-ubuntu-pkg.sh
+        cp *.deb $BUILD_ARTIFACTSTAGINGDIRECTORY
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'UbuntuPackagedCompiler'
+
+  - job: Windows
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+        ./build-windows.sh
+        cp FRC-*-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'WindowsCompiler'
+
+  - job: Mac
+    pool:
+      vmImage: 'xcode9-macos10.13'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+
+        curl -O http://s.sudre.free.fr/Software/files/Iceberg.dmg
+        sudo hdiutil attach Iceberg.dmg
+        sudo installer -pkg "/Volumes/Iceberg 1.3.1/Iceberg.mpkg" -target /
+        sudo hdiutil detach "/Volumes/Iceberg 1.3.1"
+
+        ./build-mac.sh
+        gcp mac/*Toolchain*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
+
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'MacCompiler'
