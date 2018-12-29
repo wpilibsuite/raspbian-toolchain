@@ -9,7 +9,7 @@ rm -rf repack
 if [[ `gcc -dumpmachine` == *apple* ]]
 then
 	echo "Aliasing ar and tar to use GNU variants gar and gtar..."
-	alias ar=gar
+	alias ar=/usr/local/opt/binutils/bin/gar
 	alias tar=gtar
 fi
 
@@ -19,7 +19,7 @@ mv *.deb repack/
 pushd repack
 	for file in *.deb; do
 		ar x $file
-		
+
 		# don't need these
 		rm control.tar.gz debian-binary
 		pushd out
