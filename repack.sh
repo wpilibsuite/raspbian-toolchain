@@ -8,7 +8,8 @@ rm -rf repack
 
 if [[ `gcc -dumpmachine` == *apple* ]]
 then
-	echo "Aliasing tar to use GNU variant gtar..."
+	echo "Aliasing ar and tar to use GNU variants gar and gtar..."
+	alias ar=/usr/local/opt/binutils/bin/gar
 	alias tar=gtar
 fi
 

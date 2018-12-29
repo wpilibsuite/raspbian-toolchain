@@ -6,6 +6,7 @@ brew install gcc@6
 zsh download.sh
 zsh repack.sh
 
+echo alias ar=/usr/local/opt/binutils/bin/gar
 echo alias tar=gtar
 
 cd mac
