@@ -122,10 +122,18 @@ ln -s ../../../libubsan.so.0 libubsan.so
 popd
 
 pushd repack/out/usr/lib
+if [[ `gcc -dumpmachine` == *apple* ]]
+then
+sed -i '' -e 's/\/usr\/lib\/arm-linux-gnueabihf\///g' libc.so
+sed -i '' -e 's/\/lib\/arm-linux-gnueabihf\//..\/..\/lib\//g' libc.so
+sed -i '' -e 's/\/usr\/lib\/arm-linux-gnueabihf\///g' libpthread.so
+sed -i '' -e 's/\/lib\/arm-linux-gnueabihf\//..\/..\/lib\//g' libpthread.so
+else
 sed -i 's/\/usr\/lib\/arm-linux-gnueabihf\///g' libc.so
 sed -i 's/\/lib\/arm-linux-gnueabihf\//..\/..\/lib\//g' libc.so
 sed -i 's/\/usr\/lib\/arm-linux-gnueabihf\///g' libpthread.so
 sed -i 's/\/lib\/arm-linux-gnueabihf\//..\/..\/lib\//g' libpthread.so
+fi
 popd
 
 pushd repack
