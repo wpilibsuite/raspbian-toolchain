@@ -30,6 +30,7 @@ tar xf ../isl-${V_ISL}.tar.bz2
 echo "Extracting GDB..."
 
 echo "Patching GCC..."
+sh -c "cd gcc-${V_GCC} && patch -p2 < ../../patches/gcc/g++-multiarch-incdir.diff"
 patch -p0 < ../patches/gcc/config
 patch -p0 < ../patches/gcc/ubsan.c
 
@@ -44,7 +45,8 @@ mkdir gcc-install
 cd gcc-build
 ../gcc-${V_GCC}/configure \
     --enable-threads=posix \
-    --target=arm-raspbian9-linux-gnueabihf \
+    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --target=arm-linux-gnueabihf \
     --with-arch=armv6 \
     --with-float=hard \
     --with-fpu=vfp \
@@ -57,15 +59,13 @@ cd gcc-build
     --disable-nls \
     "--with-pkgversion=GCC for Raspbian 9" \
     --with-cloog \
-    --disable-multilib \
-    --disable-multiarch \
-    --prefix=/usr/local \
-    --with-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf \
-    --enable-poison-system-directories \
+    --enable-multilib \
+    --enable-multiarch \
+    --prefix=/usr/local/raspbian9-toolchain \
+    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root \
     --disable-libmudflap \
-    --with-build-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf \
-    --libdir=/usr/local/arm-raspbian9-linux-gnueabihf/usr/lib \
-    --with-gxx-include-dir=/usr/local/arm-raspbian9-linux-gnueabihf/usr/include/c++/6.3.0 \
+    --libdir=/usr/local/raspbian9-toolchain/sys-root/usr/lib \
+    --with-gxx-include-dir=/usr/local/raspbian9-toolchain/sys-root/usr/include/c++/6.3.0 \
     --with-system-zlib \
     || exit $?
 make -j3 all-gcc || exit $?

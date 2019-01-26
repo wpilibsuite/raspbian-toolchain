@@ -2,6 +2,6 @@
 source ../versions.sh
 
 
-mkdir -p sysroot-install/c/Users/Public/raspbian9/arm-raspbian9-linux-gnueabihf
-mv sysroot-libc-linux/{usr,lib} sysroot-install/c/Users/Public/raspbian9/arm-raspbian9-linux-gnueabihf/
+mkdir -p sysroot-install/c/Users/Public/raspbian9/sys-root
+mv sysroot-libc-linux/{usr,lib} sysroot-install/c/Users/Public/raspbian9/sys-root
 

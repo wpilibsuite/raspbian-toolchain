@@ -6,14 +6,14 @@ cd binutils-build
 ../binutils-${V_BINUTILS}/configure \
     --host=i686-w64-mingw32 \
     --prefix=/c/Users/Public/raspbian9 \
-    --target=arm-raspbian9-linux-gnueabihf \
+    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --target=arm-linux-gnueabihf \
     "--with-pkgversion=GNU Binutils for Raspbian 9" \
     --enable-poison-system-directories \
-    --with-sysroot=/c/Users/Public/raspbian9/arm-raspbian9-linux-gnueabihf \
+    --with-sysroot=/c/Users/Public/raspbian9/sys-root \
     --enable-plugins \
     --disable-nls \
-    --enable-lto \
-    --with-build-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf
+    --enable-lto
 make -j3
 DESTDIR=$PWD/../binutils-install make install
 cd ../binutils-install
