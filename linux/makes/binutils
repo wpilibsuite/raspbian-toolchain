@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+echo "Patching binutils..."
+sh -c "cd binutils-${V_BINUTILS} && patch -p1 < ../../patches/binutils/129_multiarch_libpath.patch"
+
+APPEND_TOOLLIBDIR=yes
+export APPEND_TOOLLIBDIR
+
 mkdir binutils-build
 mkdir binutils-install
 cd binutils-build
