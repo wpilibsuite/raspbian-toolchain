@@ -19,7 +19,8 @@ cd binutils-build
     --with-sysroot=/c/Users/Public/raspbian9/sys-root \
     --enable-plugins \
     --disable-nls \
-    --enable-lto
+    --enable-lto \
+    --with-build-sysroot=/usr/local/raspbian9-toolchain/sys-root
 make -j3
 DESTDIR=$PWD/../binutils-install make install
 cd ../binutils-install
