@@ -13,7 +13,7 @@ alias ld=/usr/local/bin/gcc-6
 alias cc=/usr/local/bin/gcc-6
 
 
-all: clean sysroot binutils gcc gdb tree pkg tarpkg
+all: clean sysroot binutils gcc gdb tree tarpkg
 
 
 sysroot:
@@ -36,17 +36,8 @@ gcc:
 tree:
 	V_GCC=$(V_GCC) makes/tree
 
-pkg:
-	rm -rf makes/pkg/build/
-	freeze makes/pkg/Raspbian9\ Toolchain.packproj
-	ls -la makes/pkg/build
-	cd makes/pkg/build && tar czf Raspbian9-Mac-Toolchain-$(V_GCC)-Installer.pkg.tar.gz Raspbian9\ Toolchain.pkg
-	cp makes/pkg/build/Raspbian9-Mac-Toolchain-$(V_GCC)-Installer.pkg.tar.gz .
-
 tarpkg:
-	mkdir -p raspbian9
-	cp -R tree-install/usr/local/* raspbian9/
-	tar czf Raspbian9-Mac-Toolchain-$(V_GCC).tar.gz raspbian9
+	cd tree-install/usr/local && mv raspbian9-toolchain raspbian9 && tar czf ../../../Raspbian9-Mac-Toolchain-$(V_GCC).tar.gz raspbian9
 
 clean:
 	rm -rf binutils* roborio* sysroot* gcc* tree-install gdb* makes/pkg/build *.pkg.tar.gz *-Toolchain-*.tar.gz

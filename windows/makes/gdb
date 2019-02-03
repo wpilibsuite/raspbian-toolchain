@@ -6,8 +6,10 @@ cd gdb-build
 ../gdb-${V_GDB}/configure \
     --host=i686-w64-mingw32 \
     --prefix=/c/Users/Public/raspbian9 \
-    --target=arm-raspbian9-linux-gnueabihf \
-    --with-sysroot=/c/Users/Public/raspbian9/arm-raspbian9-linux-gnueabihf \
+    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --target=arm-linux-gnueabihf \
+    --with-sysroot=/c/Users/Public/raspbian9/sys-root \
+    --with-build-sysroot=/usr/local/raspbian9-toolchain/sys-root \
     --enable-plugins \
     --disable-nls \
     --with-pkgversion="GDB for Raspbian 9" \

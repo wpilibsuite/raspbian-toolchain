@@ -4,18 +4,19 @@ mkdir gdb-build
 mkdir gdb-install
 cd gdb-build
 ../gdb-${V_GDB}/configure \
-    --target=arm-raspbian9-linux-gnueabihf \
-    --prefix=/usr/local \
+    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --target=arm-linux-gnueabihf \
+    --prefix=/usr/local/raspbian9-toolchain \
     --with-pkgversion='GDB for Raspbian 9' \
     --disable-nls \
     --with-libexpat \
-    --datadir=/usr/local/share/raspbian9 \
-    --with-system-gdbinit=/usr/local/share/raspbian9/gdb/gdbinit \
-    --with-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf/ \
+    --with-system-gdbinit=/usr/local/raspbian9-toolchain/sys-root/usr/share/gdb/gdbinit \
+    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root/ \
     --enable-lto \
     || exit $?
 make || exit $?
 DESTDIR=$PWD/../gdb-install make install|| exit $?
 cd ../gdb-install
-cp ../../patches/gdb/gdbinit usr/local/share/raspbian9/gdb/gdbinit
+mkdir -p usr/local/raspbian9-toolchain/sys-root/usr/share/gdb
+cp ../../patches/gdb/gdbinit usr/local/raspbian9-toolchain/sys-root/usr/share/gdb/gdbinit
 

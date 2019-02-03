@@ -1,17 +1,23 @@
 #!/bin/zsh
 
+echo "Patching binutils..."
+sh -c "cd binutils-${V_BINUTILS} && patch -p1 < ../../patches/binutils/129_multiarch_libpath.patch"
+
+APPEND_TOOLLIBDIR=yes
+export APPEND_TOOLLIBDIR
+
 mkdir binutils-build
 mkdir binutils-install
 cd binutils-build
 ../binutils-${V_BINUTILS}/configure \
-    --prefix=/usr/local \
-    --target=arm-raspbian9-linux-gnueabihf \
+    --prefix=/usr/local/raspbian9-toolchain \
+    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --target=arm-linux-gnueabihf \
     "--with-pkgversion=GNU Binutils for Raspbian 9" \
     --enable-poison-system-directories \
-    --with-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf \
+    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root \
     --disable-nls \
     --enable-lto \
-    --with-build-sysroot=/usr/local/arm-raspbian9-linux-gnueabihf \
     --disable-werror
 make -j3
 DESTDIR=$PWD/../binutils-install make install
