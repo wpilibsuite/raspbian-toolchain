@@ -18,5 +18,4 @@ make || exit $?
 DESTDIR=$PWD/../gdb-install make install|| exit $?
 cd ../gdb-install
 mkdir -p usr/local/raspbian9-toolchain/sys-root/usr/share/gdb
-cp ../../patches/gdb/gdbinit usr/local/raspbian9-toolchain/sys-root/usr/share/gdb/gdbinit
 
