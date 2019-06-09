@@ -18,4 +18,9 @@ patch -p4 < ../../../../../../../../makes/case-sensitive-includes.diff
 popd
 rm -rf lib/xtables
 
+pushd bin
+pwd
+cp ../../../../../../../../tools/make.exe raspbian9-make.exe
+popd
+
 du -hs .
