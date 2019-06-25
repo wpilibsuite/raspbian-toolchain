@@ -32,7 +32,6 @@ echo "Extracting GDB..."
 echo "Patching GCC..."
 sh -c "cd gcc-${V_GCC} && patch -p2 < ../../patches/gcc/g++-multiarch-incdir.diff"
 patch -p0 < ../patches/gcc/config
-patch -p0 < ../patches/gcc/ubsan.c
 
 mv cloog-${V_CLOOG} gcc-${V_GCC}/cloog
 mv isl-${V_ISL} gcc-${V_GCC}/isl
