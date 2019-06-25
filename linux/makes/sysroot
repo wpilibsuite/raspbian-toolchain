@@ -2,6 +2,6 @@
 source ../versions.sh
 
 
-mkdir -p sysroot-install/usr/local/raspbian9-toolchain/sys-root
-mv sysroot-libc-linux/{usr,lib} sysroot-install/usr/local/raspbian9-toolchain/sys-root
+mkdir -p sysroot-install/usr/local/raspbian10-toolchain/sys-root
+mv sysroot-libc-linux/{usr,lib} sysroot-install/usr/local/raspbian10-toolchain/sys-root
 

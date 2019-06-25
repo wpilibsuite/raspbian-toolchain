@@ -11,16 +11,16 @@ mkdir binutils-install
 cd binutils-build
 ../binutils-${V_BINUTILS}/configure \
     --host=i686-w64-mingw32 \
-    --prefix=/c/Users/Public/raspbian9 \
-    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --prefix=/c/Users/Public/raspbian10 \
+    --program-prefix=arm-raspbian10-linux-gnueabihf- \
     --target=arm-linux-gnueabihf \
-    "--with-pkgversion=GNU Binutils for Raspbian 9" \
+    "--with-pkgversion=GNU Binutils for Raspbian 10" \
     --enable-poison-system-directories \
-    --with-sysroot=/c/Users/Public/raspbian9/sys-root \
+    --with-sysroot=/c/Users/Public/raspbian10/sys-root \
     --enable-plugins \
     --disable-nls \
     --enable-lto \
-    --with-build-sysroot=/usr/local/raspbian9-toolchain/sys-root
+    --with-build-sysroot=/usr/local/raspbian10-toolchain/sys-root
 make -j3
 DESTDIR=$PWD/../binutils-install make install
 cd ../binutils-install

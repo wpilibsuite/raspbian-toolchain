@@ -40,18 +40,18 @@ mv mpfr-${V_MPFR} gcc-${V_GCC}/mpfr
 mv mpc-${V_MPC} gcc-${V_GCC}/mpc
 mv gmp-${V_GMPf} gcc-${V_GCC}/gmp
 
-export CC_FOR_TARGET=arm-raspbian9-linux-gnueabihf-gcc
-export CXX_FOR_TARGET=arm-raspbian9-linux-gnueabihf-g++
-export GCC_FOR_TARGET=arm-raspbian9-linux-gnueabihf-gcc
-export AR_FOR_TARGET=arm-raspbian9-linux-gnueabihf-ar
-export AS_FOR_TARGET=arm-raspbian9-linux-gnueabihf-as
-export LD_FOR_TARGET=arm-raspbian9-linux-gnueabihf-ld
-export NM_FOR_TARGET=arm-raspbian9-linux-gnueabihf-nm
-export OBJCOPY_FOR_TARGET=arm-raspbian9-linux-gnueabihf-objcopy
-export OBJDUMP_FOR_TARGET=arm-raspbian9-linux-gnueabihf-objdump
-export RANLIB_FOR_TARGET=arm-raspbian9-linux-gnueabihf-ranlib
-export READELF_FOR_TARGET=arm-raspbian9-linux-gnueabihf-readelf
-export STRIP_FOR_TARGET=arm-raspbian9-linux-gnueabihf-strip
+export CC_FOR_TARGET=arm-raspbian10-linux-gnueabihf-gcc
+export CXX_FOR_TARGET=arm-raspbian10-linux-gnueabihf-g++
+export GCC_FOR_TARGET=arm-raspbian10-linux-gnueabihf-gcc
+export AR_FOR_TARGET=arm-raspbian10-linux-gnueabihf-ar
+export AS_FOR_TARGET=arm-raspbian10-linux-gnueabihf-as
+export LD_FOR_TARGET=arm-raspbian10-linux-gnueabihf-ld
+export NM_FOR_TARGET=arm-raspbian10-linux-gnueabihf-nm
+export OBJCOPY_FOR_TARGET=arm-raspbian10-linux-gnueabihf-objcopy
+export OBJDUMP_FOR_TARGET=arm-raspbian10-linux-gnueabihf-objdump
+export RANLIB_FOR_TARGET=arm-raspbian10-linux-gnueabihf-ranlib
+export READELF_FOR_TARGET=arm-raspbian10-linux-gnueabihf-readelf
+export STRIP_FOR_TARGET=arm-raspbian10-linux-gnueabihf-strip
 
 mkdir gcc-build
 mkdir gcc-install
@@ -59,7 +59,7 @@ cd gcc-build
 ../gcc-${V_GCC}/configure \
     --host=i686-w64-mingw32 \
     --enable-threads=posix \
-    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --program-prefix=arm-raspbian10-linux-gnueabihf- \
     --target=arm-linux-gnueabihf \
     --with-arch=armv6 \
     --with-float=hard \
@@ -71,16 +71,16 @@ cd gcc-build
     --enable-shared \
     --enable-lto \
     --disable-nls \
-    "--with-pkgversion=GCC for Raspbian 9" \
+    "--with-pkgversion=GCC for Raspbian 10" \
     --with-cloog \
     --enable-multilib \
     --enable-multiarch \
-    --prefix=/c/Users/Public/raspbian9 \
-    --with-sysroot=/c/Users/Public/raspbian9/sys-root \
+    --prefix=/c/Users/Public/raspbian10 \
+    --with-sysroot=/c/Users/Public/raspbian10/sys-root \
     --disable-libmudflap \
-    --with-build-sysroot=/usr/local/raspbian9-toolchain/sys-root \
-    --libdir=/c/Users/Public/raspbian9/sys-root/usr/lib \
-    --with-gxx-include-dir=/c/Users/Public/raspbian9/sys-root/usr/include/c++/6.3.0 \
+    --with-build-sysroot=/usr/local/raspbian10-toolchain/sys-root \
+    --libdir=/c/Users/Public/raspbian10/sys-root/usr/lib \
+    --with-gxx-include-dir=/c/Users/Public/raspbian10/sys-root/usr/include/c++/8.3.0 \
     || exit $?
 make -j3 all-gcc || exit $?
 DESTDIR=$PWD/../gcc-install make install-gcc || exit $?
