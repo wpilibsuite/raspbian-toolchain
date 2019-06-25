@@ -16,7 +16,7 @@ export FFLAGS_FOR_TARGET="-g -O2"
 export LDFLAGS_FOR_TARGET="-Wl,-Bsymbolic-functions -Wl,-z,relro"
 
 echo "Extracting GCC..."
-tar xf ../gcc-${V_GCC}.tar.bz2
+tar xf ../gcc-${V_GCC}.tar.gz
 echo "Extracting MPFR..."
 tar xf ../mpfr-${V_MPFR}.tar.bz2
 echo "Extracting MPC..."
