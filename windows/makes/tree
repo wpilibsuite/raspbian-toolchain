@@ -12,6 +12,8 @@ i686-w64-mingw32-strip bin/*.exe
 i686-w64-mingw32-strip arm-raspbian*/bin/*.exe
 find libexec -name \*.exe | xargs i686-w64-mingw32-strip
 rm -rf share/info share/man
+# Remove non prefixed gcc
+rm bin/arm-linux-gnueabihf-gcc*
 
 pushd sys-root/usr/include
 patch -p4 < ../../../../../../../../makes/case-sensitive-includes.diff

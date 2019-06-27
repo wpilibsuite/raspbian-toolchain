@@ -12,6 +12,9 @@ pushd tree-install
 strip usr/local/raspbian10-toolchain/bin/*
 strip usr/local/raspbian10-toolchain/arm-*/bin/*
 find usr/local/raspbian10-toolchain/libexec -type f |xargs strip
+
+# Remove non prefixed gcc
+rm /usr/local/raspbian10-toolchain/bin/arm-linux-gnueabihf-gcc*
 popd
 
 du -hs .
