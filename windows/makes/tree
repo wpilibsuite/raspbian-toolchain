@@ -20,7 +20,7 @@ rm -rf lib/xtables
 
 pushd bin
 pwd
-cp ../../../../../../../tools/make.exe raspbian9-make.exe
+cp ../../../../../../../tools/make.exe raspbian10-make.exe
 popd
 
 du -hs .
