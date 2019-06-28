@@ -105,6 +105,7 @@ ln -s ../../../arm-linux-gnueabihf/libstdc++.so.6 libstdc++.so
 ln -s ../../../arm-linux-gnueabihf/libubsan.so.0 libubsan.so
 popd
 
+rm repack/out/usr/lib/arm-linux-gnueabihf/libpthread.so
 cp patches/libpthread.so repack/out/usr/lib/arm-linux-gnueabihf/libpthread.so
 
 pushd repack/out/usr/lib/arm-linux-gnueabihf
