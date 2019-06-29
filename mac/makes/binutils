@@ -10,12 +10,12 @@ mkdir binutils-build
 mkdir binutils-install
 cd binutils-build
 ../binutils-${V_BINUTILS}/configure \
-    --prefix=/usr/local/raspbian9-toolchain \
-    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --prefix=/usr/local/raspbian10-toolchain \
+    --program-prefix=arm-raspbian10-linux-gnueabihf- \
     --target=arm-linux-gnueabihf \
-    "--with-pkgversion=GNU Binutils for Raspbian 9" \
+    "--with-pkgversion=GNU Binutils for Raspbian 10" \
     --enable-poison-system-directories \
-    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root \
+    --with-sysroot=/usr/local/raspbian10-toolchain/sys-root \
     --disable-nls \
     --enable-lto \
     --disable-werror

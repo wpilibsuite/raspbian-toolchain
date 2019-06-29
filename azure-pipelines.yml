@@ -11,7 +11,7 @@ jobs:
     steps:
     - script: |
         ./build-linux-tgz.sh
-        cp Raspbian9-Linux*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
+        cp Raspbian10-Linux*.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
       inputs:
@@ -24,7 +24,7 @@ jobs:
     steps:
     - script: |
         ./build-windows.sh
-        cp Raspbian9-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
+        cp Raspbian10-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
       inputs:

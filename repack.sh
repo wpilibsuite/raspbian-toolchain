@@ -44,13 +44,13 @@ rm -rf repack/out/etc
 # remove all empty dirs (semi-recursive)
 rm -d repack/out/*(/^F)
 
-# move "6" to "6.3.0" directories
-#rm repack/out/usr/lib/gcc/arm-linux-gnueabihf/6.3.0
-mv repack/out/usr/lib/gcc/arm-linux-gnueabihf/6 repack/out/usr/lib/gcc/arm-linux-gnueabihf/6.3.0
-rm repack/out/usr/include/arm-linux-gnueabihf/c++/6.3.0
-mv repack/out/usr/include/arm-linux-gnueabihf/c++/6 repack/out/usr/include/arm-linux-gnueabihf/c++/6.3.0
-rm repack/out/usr/include/c++/6.3.0
-mv repack/out/usr/include/c++/6 repack/out/usr/include/c++/6.3.0
+# move "6" to "8.3.0" directories
+#rm repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
+mv repack/out/usr/lib/gcc/arm-linux-gnueabihf/8 repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
+rm repack/out/usr/include/arm-linux-gnueabihf/c++/8.3.0
+mv repack/out/usr/include/arm-linux-gnueabihf/c++/8 repack/out/usr/include/arm-linux-gnueabihf/c++/8.3.0
+rm repack/out/usr/include/c++/8.3.0
+mv repack/out/usr/include/c++/8 repack/out/usr/include/c++/8.3.0
 
 # change absolute symlinks into relative symlinks
 pushd repack/out/usr/lib/arm-linux-gnueabihf
@@ -90,7 +90,7 @@ ln -s ../../../lib/arm-linux-gnueabihf/libthread_db.so.1 libthread_db.so
 ln -s ../../../lib/arm-linux-gnueabihf/libutil.so.1 libutil.so
 popd
 
-pushd repack/out/usr/lib/gcc/arm-linux-gnueabihf/6.3.0
+pushd repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
 rm libasan.so
 rm libatomic.so
 rm libgcc_s.so.1
@@ -104,6 +104,9 @@ ln -s ../../../arm-linux-gnueabihf/libgomp.so.1 libgomp.so
 ln -s ../../../arm-linux-gnueabihf/libstdc++.so.6 libstdc++.so
 ln -s ../../../arm-linux-gnueabihf/libubsan.so.0 libubsan.so
 popd
+
+rm repack/out/usr/lib/arm-linux-gnueabihf/libpthread.so
+cp patches/libpthread.so repack/out/usr/lib/arm-linux-gnueabihf/libpthread.so
 
 pushd repack/out/usr/lib/arm-linux-gnueabihf
 if [[ `gcc -dumpmachine` == *apple* ]]

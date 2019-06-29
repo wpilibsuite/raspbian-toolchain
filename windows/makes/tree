@@ -6,12 +6,14 @@ rsync gcc-install/ tree-install -a --copy-links
 rsync binutils-install/ tree-install -a --copy-links
 rsync sysroot-install/ tree-install -a --copy-links
 rsync gdb-install/ tree-install -a --copy-links
-cd tree-install/c/Users/Public/raspbian9
+cd tree-install/c/Users/Public/raspbian10
 du -hs .
 i686-w64-mingw32-strip bin/*.exe
 i686-w64-mingw32-strip arm-raspbian*/bin/*.exe
 find libexec -name \*.exe | xargs i686-w64-mingw32-strip
 rm -rf share/info share/man
+# Remove non prefixed gcc
+rm bin/arm-linux-gnueabihf-gcc*
 
 pushd sys-root/usr/include
 patch -p4 < ../../../../../../../../makes/case-sensitive-includes.diff

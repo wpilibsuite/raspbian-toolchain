@@ -16,7 +16,7 @@ export FFLAGS_FOR_TARGET="-g -O2"
 export LDFLAGS_FOR_TARGET="-Wl,-Bsymbolic-functions -Wl,-z,relro"
 
 echo "Extracting GCC..."
-tar xf ../gcc-${V_GCC}.tar.bz2
+tar xf ../gcc-${V_GCC}.tar.gz
 echo "Extracting MPFR..."
 tar xf ../mpfr-${V_MPFR}.tar.bz2
 echo "Extracting MPC..."
@@ -32,7 +32,6 @@ echo "Extracting GDB..."
 echo "Patching GCC..."
 sh -c "cd gcc-${V_GCC} && patch -p2 < ../../patches/gcc/g++-multiarch-incdir.diff"
 patch -p0 < ../patches/gcc/config
-patch -p0 < ../patches/gcc/ubsan.c
 
 mv cloog-${V_CLOOG} gcc-${V_GCC}/cloog
 mv isl-${V_ISL} gcc-${V_GCC}/isl
@@ -45,7 +44,7 @@ mkdir gcc-install
 cd gcc-build
 ../gcc-${V_GCC}/configure \
     --enable-threads=posix \
-    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --program-prefix=arm-raspbian10-linux-gnueabihf- \
     --target=arm-linux-gnueabihf \
     --with-arch=armv6 \
     --with-float=hard \
@@ -57,15 +56,15 @@ cd gcc-build
     --enable-shared \
     --enable-lto \
     --disable-nls \
-    "--with-pkgversion=GCC for Raspbian 9" \
+    "--with-pkgversion=GCC for Raspbian 10" \
     --with-cloog \
     --enable-multilib \
     --enable-multiarch \
-    --prefix=/usr/local/raspbian9-toolchain \
-    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root \
+    --prefix=/usr/local/raspbian10-toolchain \
+    --with-sysroot=/usr/local/raspbian10-toolchain/sys-root \
     --disable-libmudflap \
-    --libdir=/usr/local/raspbian9-toolchain/sys-root/usr/lib \
-    --with-gxx-include-dir=/usr/local/raspbian9-toolchain/sys-root/usr/include/c++/6.3.0 \
+    --libdir=/usr/local/raspbian10-toolchain/sys-root/usr/lib \
+    --with-gxx-include-dir=/usr/local/raspbian10-toolchain/sys-root/usr/include/c++/8.3.0 \
     --with-system-zlib \
     || exit $?
 make -j3 all-gcc || exit $?

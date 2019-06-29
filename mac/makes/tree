@@ -9,9 +9,12 @@ rsync gdb-install/ tree-install -a --copy-links
 du -hs .
 
 pushd tree-install
-strip usr/local/raspbian9-toolchain/bin/*
-strip usr/local/raspbian9-toolchain/arm-*/bin/*
-find usr/local/raspbian9-toolchain/libexec -type f |xargs strip
+strip usr/local/raspbian10-toolchain/bin/*
+strip usr/local/raspbian10-toolchain/arm-*/bin/*
+find usr/local/raspbian10-toolchain/libexec -type f |xargs strip
+
+# Remove non prefixed gcc
+rm /usr/local/raspbian10-toolchain/bin/arm-linux-gnueabihf-gcc*
 popd
 
 du -hs .

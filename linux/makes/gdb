@@ -4,18 +4,18 @@ mkdir gdb-build
 mkdir gdb-install
 cd gdb-build
 ../gdb-${V_GDB}/configure \
-    --program-prefix=arm-raspbian9-linux-gnueabihf- \
+    --program-prefix=arm-raspbian10-linux-gnueabihf- \
     --target=arm-linux-gnueabihf \
-    --prefix=/usr/local/raspbian9-toolchain \
-    --with-pkgversion='GDB for Raspbian 9' \
+    --prefix=/usr/local/raspbian10-toolchain \
+    --with-pkgversion='GDB for Raspbian 10' \
     --disable-nls \
     --with-libexpat \
-    --with-system-gdbinit=/usr/local/raspbian9-toolchain/sys-root/usr/share/gdb/gdbinit \
-    --with-sysroot=/usr/local/raspbian9-toolchain/sys-root/ \
+    --with-system-gdbinit=/usr/local/raspbian10-toolchain/sys-root/usr/share/gdb/gdbinit \
+    --with-sysroot=/usr/local/raspbian10-toolchain/sys-root/ \
     --enable-lto \
     || exit $?
 make || exit $?
 DESTDIR=$PWD/../gdb-install make install|| exit $?
 cd ../gdb-install
-mkdir -p usr/local/raspbian9-toolchain/sys-root/usr/share/gdb
+mkdir -p usr/local/raspbian10-toolchain/sys-root/usr/share/gdb
 
