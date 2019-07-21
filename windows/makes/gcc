@@ -75,11 +75,12 @@ cd gcc-build
     --enable-multilib \
     --enable-multiarch \
     --prefix=/c/Users/Public/raspbian10 \
+    --with-gcc-major-version-only \
     --with-sysroot=/c/Users/Public/raspbian10/sys-root \
     --disable-libmudflap \
     --with-build-sysroot=/usr/local/raspbian10-toolchain/sys-root \
     --libdir=/c/Users/Public/raspbian10/sys-root/usr/lib \
-    --with-gxx-include-dir=/c/Users/Public/raspbian10/sys-root/usr/include/c++/8.3.0 \
+    --with-gxx-include-dir=/c/Users/Public/raspbian10/sys-root/usr/include/c++/8 \
     || exit $?
 make -j3 all-gcc || exit $?
 DESTDIR=$PWD/../gcc-install make install-gcc || exit $?

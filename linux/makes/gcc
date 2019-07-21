@@ -61,10 +61,11 @@ cd gcc-build
     --enable-multilib \
     --enable-multiarch \
     --prefix=/usr/local/raspbian10-toolchain \
+    --with-gcc-major-version-only \
     --with-sysroot=/usr/local/raspbian10-toolchain/sys-root \
     --disable-libmudflap \
     --libdir=/usr/local/raspbian10-toolchain/sys-root/usr/lib \
-    --with-gxx-include-dir=/usr/local/raspbian10-toolchain/sys-root/usr/include/c++/8.3.0 \
+    --with-gxx-include-dir=/usr/local/raspbian10-toolchain/sys-root/usr/include/c++/8 \
     --with-system-zlib \
     || exit $?
 make -j3 all-gcc || exit $?
