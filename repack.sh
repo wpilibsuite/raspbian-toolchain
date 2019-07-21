@@ -44,14 +44,6 @@ rm -rf repack/out/etc
 # remove all empty dirs (semi-recursive)
 rm -d repack/out/*(/^F)
 
-# move "6" to "8.3.0" directories
-#rm repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
-mv repack/out/usr/lib/gcc/arm-linux-gnueabihf/8 repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
-rm repack/out/usr/include/arm-linux-gnueabihf/c++/8.3.0
-mv repack/out/usr/include/arm-linux-gnueabihf/c++/8 repack/out/usr/include/arm-linux-gnueabihf/c++/8.3.0
-rm repack/out/usr/include/c++/8.3.0
-mv repack/out/usr/include/c++/8 repack/out/usr/include/c++/8.3.0
-
 # change absolute symlinks into relative symlinks
 pushd repack/out/usr/lib/arm-linux-gnueabihf
 rm libanl.so
@@ -90,7 +82,7 @@ ln -s ../../../lib/arm-linux-gnueabihf/libthread_db.so.1 libthread_db.so
 ln -s ../../../lib/arm-linux-gnueabihf/libutil.so.1 libutil.so
 popd
 
-pushd repack/out/usr/lib/gcc/arm-linux-gnueabihf/8.3.0
+pushd repack/out/usr/lib/gcc/arm-linux-gnueabihf/8
 rm libasan.so
 rm libatomic.so
 rm libgcc_s.so.1
