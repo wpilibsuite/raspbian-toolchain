@@ -17,6 +17,19 @@ jobs:
       inputs:
         artifactName: 'LinuxCompiler'
 
+  - job: Linux-i386
+    pool:
+      vmImage: 'Ubuntu 16.04'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+        ./build-linux-tgz.sh i386
+        cp Raspbian10-Linux-Toolchain-8.3.0.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY/Raspbian10-Linux-Toolchain-8.3.0-i386.tar.gz
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'Linuxi386Compiler'
+
   - job: Windows
     pool:
       vmImage: 'Ubuntu 16.04'
