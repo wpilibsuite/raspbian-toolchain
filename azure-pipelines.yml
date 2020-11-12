@@ -23,7 +23,7 @@ jobs:
     timeoutInMinutes: 0
     steps:
     - script: |
-        ./build-linux-tgz.sh i386
+        ./build-linux-tgz.sh .i386
         cp Raspbian10-Linux-Toolchain-8.3.0.tar.gz $BUILD_ARTIFACTSTAGINGDIRECTORY/Raspbian10-Linux-Toolchain-8.3.0-i386.tar.gz
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
