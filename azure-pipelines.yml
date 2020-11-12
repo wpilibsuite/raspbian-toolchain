@@ -17,7 +17,7 @@ jobs:
       inputs:
         artifactName: 'LinuxCompiler'
 
-  - job: Linux-i386
+  - job: Linux_i386
     pool:
       vmImage: 'Ubuntu 16.04'
     timeoutInMinutes: 0
@@ -28,7 +28,7 @@ jobs:
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
       inputs:
-        artifactName: 'Linuxi386Compiler'
+        artifactName: 'Linux_i386Compiler'
 
   - job: Windows
     pool:
