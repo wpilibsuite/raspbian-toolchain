@@ -19,11 +19,24 @@ jobs:
 
   - job: Windows
     pool:
-      vmImage: 'Ubuntu 16.04'
+      vmImage: 'ubuntu-latest'
     timeoutInMinutes: 0
     steps:
     - script: |
-        ./build-windows.sh
+        ./build-win32.sh
+        cp Raspbian10-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
+      displayName: 'Build the image'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: 'WindowsCompiler'
+
+  - job: Windows x64
+    pool:
+      vmImage: 'ubuntu-latest'
+    timeoutInMinutes: 0
+    steps:
+    - script: |
+        ./build-win64.sh
         cp Raspbian10-Windows*.zip $BUILD_ARTIFACTSTAGINGDIRECTORY
       displayName: 'Build the image'
     - task: PublishBuildArtifacts@1
