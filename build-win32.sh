@@ -3,7 +3,7 @@
 docker pull wpilib/toolchain-builder:18.04 \
  && docker run -v ${PWD}:/artifacts wpilib/toolchain-builder:18.04 bash -c "\
   cp /artifacts/download.sh /artifacts/repack.sh /artifacts/versions.sh . \
-  && cp -R /artifacts/patches /artifacts/linux /artifacts/windows . \
+  && cp -R /artifacts/patches /artifacts/linux /artifacts/win32 . \
   && zsh download.sh \
   && zsh repack.sh \
   && cd linux \
@@ -13,6 +13,6 @@ docker pull wpilib/toolchain-builder:18.04 \
   && sudo cp binutils-install/usr/local/* /usr/local/ -r \
   && make gcc \
   && sudo cp gcc-install/usr/local/* /usr/local/ -r \
-  && cd ../windows \
+  && cd ../win32 \
   && env PATH=\${PATH}:/usr/local/raspbian10-toolchain/bin make sysroot binutils gcc gdb tree zip \
   && cp *.zip /artifacts/"
