@@ -115,6 +115,8 @@ sed -i 's/\/lib\//..\/..\/..\/lib\//g' libpthread.so
 fi
 popd
 
+cp install-pkg.sh repack/out/
+
 pushd repack
 	mv out sysroot-libc-linux
 	tar cjf "${THIS_DIR}/sysroot-libc-linux.tar.bz2" sysroot-libc-linux --owner=0 --group=0
